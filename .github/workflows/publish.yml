@@ -12,4 +12,4 @@ jobs:
     - name: Publish PowerShell Gallery
       shell: pwsh
       run: |
-        Publish-Module -Path .\Source -NuGetApiKey ${{ secrets.PS_NUGET_KEY }} -Verbose
+        Publish-Module -Path .\PSSryliusWrite -NuGetApiKey ${{ secrets.PS_NUGET_KEY }} -Verbose
