@@ -1,15 +1,23 @@
-name: Publish PowerShell Module
+# Srylius :: Action name
+name    : Publish PowerShell Module
 
-on:
-  release:
-    types: [published]
+# Srylius :: Action required to take action
+on      :
+  # Srylius :: Make it work only when version is released
+  release :
+    types : [published]
 
-jobs:
-  publish-to-gallery:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Publish PowerShell Gallery
-      shell: pwsh
-      run: |
+# Srylius :: Jobs to be done during the action 
+jobs    :
+  # Srylius :: Publish the module in the PowerShell Gallery
+  publish-to-gallery :
+    # Srylius :: Target operating system
+    runs-on : windows-latest
+    
+    # Srylius :: Steps to be taken
+    steps   :
+    - uses    : actions/checkout@v2
+    - name    : Publish PowerShell Module
+      shell   : pwsh
+      run     : |
         Publish-Module -Path .\PSSryliusWrite -NuGetApiKey ${{ secrets.PS_NUGET_KEY }} -Verbose
